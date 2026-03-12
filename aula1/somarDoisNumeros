@@ -1,0 +1,40 @@
+.data
+    texto: .asciz "Digite um inteiro: "
+    resultadoSoma: .asciz "O resultado da soma é: "
+
+.text
+    la a0, texto
+    addi a7, zero, 4    # print string
+    ecall
+
+    # ler inteiro
+    li a7, 5
+    ecall
+            
+    #salvar o valor em outro lugar
+    mv t0, a0
+    
+    
+    la a0, texto
+    li a7, 4
+    ecall
+    
+    li a7, 5
+    ecall
+    
+    mv t1, a0
+    add t2, t1, t0
+    
+    la a0, resultadoSoma
+    li a7, 4
+    ecall
+    
+    
+    mv a0, t2
+    li a7, 1
+    ecall
+    
+
+    # exit
+    li a7, 10
+    ecall
