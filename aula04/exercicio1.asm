@@ -2,10 +2,7 @@
 msgA: .asciz "Insira o primeiro valor: "
 msgB: .asciz "Insira o segundo valor: "
 resultado: .asciz "O MDC é: "
-espaco: .asciz "  "
-
 .text
-
 
 _start:
 # Ler primero valor
