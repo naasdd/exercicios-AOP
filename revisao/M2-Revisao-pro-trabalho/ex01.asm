@@ -14,7 +14,7 @@ main:
 	
 	addi a7, zero, 5
 	ecall
-	add s0, zero, a0
+	add t0, zero, a0
 	
 	addi a7, zero, 4
 	la a0, msgB
@@ -22,28 +22,38 @@ main:
 	
 	addi a7, zero, 5
 	ecall
-	add s1, zero, a0
+
 	
+	add a1, zero, a0
+	add a0, zero, t0
+
 	jal ra, soma
+	add t0, zero, a0
+	add t1, zero, a1
 	
 	addi a7, zero, 4
 	la a0, msgResultado
 	ecall
 	
 	addi a7, zero, 1
-	add a0, zero, t2
+	add a0, zero, t0
 	ecall
 	
 	addi a7, zero, 10
 	ecall
+	
+	
 dobro:
-	addi s3, zero, 2
-	mul s0, s0, s3
-	lw ra, 4(sp)
+	addi t3, zero, 2
+	mul a0, a0, t3
 	jalr zero, ra, 0
+	
+	
 soma:
 	addi sp, sp, -8
 	sw ra, 4(sp)
 	jal ra, dobro
-	add s2, s0, s1
-	jalr ra
+	add a0, a0, a1
+	lw ra, 4(sp)
+	addi sp, sp, 8
+	jalr zero, ra, 0
